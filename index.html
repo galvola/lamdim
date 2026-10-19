@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Escritório Lamdim | Contabilidade online para MEI e empresas</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+:root{color-scheme:light;--navy:#0d2347;--navy2:#16346a;--tint:#eef3fb;--line:#dde5f2;--mut:#5a6782;--amber:#f7b22a;--amber2:#e9a016;--green:#0b9b6b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+body{background:#fff;color:var(--navy);font-family:'Plus Jakarta Sans','Segoe UI',Helvetica,Arial,sans-serif;overflow-x:hidden;font-size:17px;line-height:1.6}
+h1,h2,h3{letter-spacing:-.03em;line-height:1.05;font-weight:800!important}
+.mut{color:var(--mut)}
+.btn{background:var(--amber);color:var(--navy);font-weight:800;border-radius:12px;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:center;gap:.55rem;min-height:56px;text-align:center;transition:background .2s,transform .2s;box-shadow:0 8px 20px -8px rgba(233,160,22,.8)}
+.btn:hover{background:var(--amber2);transform:translateY(-1px)}
+.btn-o{background:#fff;border:2px solid var(--navy);box-shadow:none;min-height:48px;padding:.6rem 1.2rem}
+.btn-o:hover{background:var(--navy);color:#fff}
+.field{width:100%;border:1.5px solid #c9d4e8;border-radius:12px;padding:.9rem 1rem;font-size:16px;background:#fff;color:var(--navy);min-height:54px;font-family:inherit}
+.field:focus{outline:none;border-color:var(--navy2);box-shadow:0 0 0 4px #d6e2fa}
+.pill{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid var(--line);border-radius:99px;padding:.4rem .9rem;font-size:.8rem;font-weight:700}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px}
+.ico{width:52px;height:52px;border-radius:14px;background:var(--tint);display:grid;place-items:center;color:var(--navy2)}
+.ck{flex:none;width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;margin-top:3px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;background:linear-gradient(90deg,var(--navy) var(--p,50%),#d3dcee var(--p,50%));outline:none;margin:16px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;border-radius:50%;background:var(--amber);border:4px solid #fff;box-shadow:0 2px 8px rgba(13,35,71,.4);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--amber);border:4px solid #fff;cursor:pointer}
+.seg{border:1.5px solid #c9d4e8;border-radius:12px;padding:.7rem .25rem;font-weight:700;font-size:.9rem;min-height:48px;background:#fff}
+.seg.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+details summary{cursor:pointer;list-style:none;min-height:56px}
+details summary::-webkit-details-marker{display:none}
+details[open] .pl{transform:rotate(45deg)}.pl{transition:.2s}
+.marq{display:flex;gap:.7rem;width:max-content;animation:mq 50s linear infinite}
+@media (hover:hover){.marq:hover{animation-play-state:paused}}
+.marq.rev{animation-direction:reverse;animation-duration:128s}
+@keyframes mq{to{transform:translateX(-50%)}}
+.chip{white-space:nowrap;background:var(--tint);border-radius:99px;padding:.65rem 1.2rem;font-weight:700;font-size:15px}
+#bar{transform:translateY(120%);transition:transform .3s}#bar.show{transform:none}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur" style="border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)">
+  <div class="max-w-6xl mx-auto px-5 h-[68px] flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" rx="44" fill="#0d2347"/><rect x="46" y="38" width="30" height="104" rx="7" fill="#fff"/><rect x="46" y="114" width="118" height="28" rx="7" fill="#fff"/><rect x="92" y="92" width="18" height="16" rx="4" fill="#e3b94f"/><rect x="118" y="72" width="18" height="36" rx="4" fill="#e3b94f"/><rect x="144" y="46" width="18" height="62" rx="4" fill="#3fe0a8"/></svg>
+      <span class="leading-none"><b class="block tracking-[.16em] text-[17px] font-extrabold">LAMDIM</b><span class="block text-[9px] tracking-[.22em] font-bold mt-1" style="color:#b8861f">CONTABILIDADE</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-[15px] font-semibold">
+      <a href="#servicos">Serviços</a><a href="#economia">Simulador</a><a href="#como">Como funciona</a><a href="#faq">Dúvidas</a>
+    </nav>
+    <a href="#diagnostico" class="btn btn-o text-sm">Diagnóstico grátis</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section style="background:linear-gradient(180deg,var(--tint),#fff)">
+  <div class="max-w-6xl mx-auto px-5 pt-7 pb-12 md:pt-16 md:pb-20 grid lg:grid-cols-12 gap-7 lg:gap-10 items-center">
+    <div class="lg:col-span-7">
+      <span class="pill"><span style="color:var(--green)">●</span> Contabilidade online · MEI e empresas</span>
+      <h1 class="text-[3rem] sm:text-6xl lg:text-[4.4rem] mt-4"><span style="background:linear-gradient(transparent 62%,var(--amber) 62%);padding:0 .08em">Menos imposto.</span><br>Zero dor de cabeça.</h1>
+      <p class="mt-4 text-lg font-semibold max-w-md" style="color:var(--navy2)">Diagnóstico gratuito com um contador de verdade.</p>
+      <ul class="mt-5 space-y-2 font-semibold text-[16px]">
+        <li class="flex gap-3"><span class="ck">✓</span>Resposta em até 1 hora</li>
+        <li class="flex gap-3"><span class="ck">✓</span>Atendimento pelo WhatsApp</li>
+        <li class="flex gap-3"><span class="ck">✓</span>Sem fidelidade</li>
+      </ul>
+    </div>
+
+    <div id="diagnostico" class="lg:col-span-5 card p-6 sm:p-8 scroll-mt-24" style="box-shadow:0 30px 60px -30px rgba(13,35,71,.35)">
+      <h2 class="text-2xl">Peça seu diagnóstico gratuito</h2>
+      <p class="mut text-[15px] mt-1">Resposta de um contador em até 1 dia útil.</p>
+      <div class="space-y-3 mt-5">
+        <div><label class="text-sm font-bold" for="nome">Seu nome</label><input id="nome" class="field mt-1" autocomplete="name" placeholder="Como podemos te chamar?"></div>
+        <div><label class="text-sm font-bold" for="tel">WhatsApp</label><input id="tel" class="field mt-1" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000"></div>
+        <div><label class="text-sm font-bold" for="fx">Faturamento mensal aproximado</label>
+          <select id="fx" class="field mt-1"><option>Ainda vou abrir minha empresa</option><option>Até R$ 10 mil</option><option selected>R$ 10 mil a R$ 50 mil</option><option>R$ 50 mil a R$ 150 mil</option><option>Acima de R$ 150 mil</option></select></div>
+        <p id="err" class="text-sm font-bold" style="color:#b42318" hidden>Informe seu nome e um WhatsApp válido.</p>
+        <button id="send" type="button" class="btn w-full">Quero meu diagnóstico grátis →</button>
+        <p class="text-[12px] mut text-center">Seus dados são usados só para o contato sobre o diagnóstico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Segmentos -->
+<section class="py-10 overflow-hidden" style="border-block:1px solid var(--line)">
+  <p class="text-center text-sm font-bold mut px-5">Atendemos empresas de todos os segmentos</p>
+  <div class="mt-4 space-y-3"><div class="marq" id="marq"></div><div class="marq rev" id="marq2"></div></div>
+</section>
+
+<!-- Serviços -->
+<section id="servicos" class="max-w-6xl mx-auto px-5 py-16 md:py-24">
+  <div class="max-w-2xl rv"><h2 class="text-3xl sm:text-4xl">Tudo o que sua empresa precisa, em um só lugar</h2><p class="mut mt-3">Você cuida do negócio. A gente cuida de impostos, notas, obrigações e do relacionamento com a Receita.</p></div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10" id="svc"></div>
+</section>
+
+<!-- Simulador -->
+<section id="economia" style="background:var(--navy);color:#fff">
+  <div class="max-w-6xl mx-auto px-5 py-16 md:py-24 grid lg:grid-cols-2 gap-10 items-center">
+    <div class="rv">
+      <span class="pill" style="background:transparent;color:#f7b22a;border-color:#34507f">Simulador gratuito</span>
+      <h2 class="text-3xl sm:text-4xl mt-4">Veja quanto a sua empresa pode economizar</h2>
+      <p class="mt-4 text-[17px]" style="color:#c2cde2">Informe seu faturamento e seu enquadramento. Em segundos você tem uma estimativa e pode confirmar com um contador, sem custo.</p>
+    </div>
+    <div class="card p-6 sm:p-8" style="color:var(--navy)">
+      <p class="text-sm font-bold mut">Faturamento mensal</p>
+      <div class="text-4xl font-extrabold" id="fatOut">R$ 50.000</div>
+      <input id="fat" type="range" min="0" max="11" step="1" value="7" aria-label="Faturamento mensal">
+      <p class="text-sm font-bold mut mt-3">Seu enquadramento</p>
+      <div class="grid grid-cols-2 gap-2 mt-2" id="reg">
+        <button type="button" class="seg" data-r="0" data-n="MEI">MEI</button>
+        <button type="button" class="seg on" data-r="0.12" data-n="Simples Nacional">Simples Nacional</button>
+        <button type="button" class="seg" data-r="0.15" data-n="Lucro Presumido">Lucro Presumido</button>
+        <button type="button" class="seg" data-r="0.13" data-n="não sei informar">Não sei</button>
+      </div>
+      <div class="mt-5 rounded-2xl p-5" style="background:var(--tint)">
+        <p class="text-xs font-bold mut" id="rl">Potencial de economia estimado</p>
+        <p class="text-[1.6rem] sm:text-3xl font-extrabold leading-tight mt-1" id="res">R$ 0</p>
+        <p class="text-sm mut mt-2" id="res2"></p>
+      </div>
+      <p class="text-[12px] mut mt-2">Estimativa ilustrativa. O resultado real é confirmado no diagnóstico.</p>
+      <a id="w1" href="#" target="_blank" rel="noopener" class="btn mt-4">Confirmar no WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Como funciona -->
+<section id="como" class="max-w-6xl mx-auto px-5 py-16 md:py-24">
+  <h2 class="text-3xl sm:text-4xl text-center rv">Como funciona</h2>
+  <div class="grid md:grid-cols-3 gap-5 mt-12">
+    <div class="card p-7 rv"><div class="w-11 h-11 rounded-full grid place-items-center font-extrabold text-lg" style="background:var(--amber)">1</div><h3 class="text-xl mt-4">Você pede o diagnóstico</h3><p class="mut mt-2">Preencha o formulário ou chame no WhatsApp. Leva menos de 2 minutos.</p></div>
+    <div class="card p-7 rv"><div class="w-11 h-11 rounded-full grid place-items-center font-extrabold text-lg" style="background:var(--amber)">2</div><h3 class="text-xl mt-4">Analisamos sua empresa</h3><p class="mut mt-2">Em até 1 dia útil, um contador mostra o que encontrou, em linguagem simples.</p></div>
+    <div class="card p-7 rv"><div class="w-11 h-11 rounded-full grid place-items-center font-extrabold text-lg" style="background:var(--amber)">3</div><h3 class="text-xl mt-4">Você decide</h3><p class="mut mt-2">Se fizer sentido, cuidamos de tudo. Se não, o relatório continua sendo seu.</p></div>
+  </div>
+  <div class="mt-10 rounded-3xl p-7 sm:p-10 grid md:grid-cols-3 gap-6 items-center rv" style="background:var(--tint)">
+    <div class="md:col-span-2"><p class="text-sm font-extrabold" style="color:var(--green)">NOSSA GARANTIA</p><h3 class="text-2xl sm:text-3xl mt-2">Se não encontrarmos economia nem nada a corrigir, você não paga nada.</h3></div>
+    <a href="#diagnostico" class="btn">Quero meu diagnóstico →</a>
+  </div>
+</section>
+
+<!-- Depoimentos -->
+<section style="background:var(--tint)">
+  <div class="max-w-6xl mx-auto px-5 py-16 md:py-24">
+    <h2 class="text-3xl sm:text-4xl text-center rv">Quem usa recomenda</h2>
+    <!-- SUBSTITUA pelos depoimentos reais -->
+    <div class="grid md:grid-cols-3 gap-5 mt-10">
+      <figure class="card p-7 rv"><div style="color:#e9a016">★★★★★</div><blockquote class="mt-3 font-semibold">“[Depoimento real: o que mudou na empresa depois da Lamdim.]”</blockquote><figcaption class="mt-4 text-sm"><b>Nome do cliente</b> <span class="mut">· Segmento</span></figcaption></figure>
+      <figure class="card p-7 rv"><div style="color:#e9a016">★★★★★</div><blockquote class="mt-3 font-semibold">“[Depoimento real: economia ou clareza nos números.]”</blockquote><figcaption class="mt-4 text-sm"><b>Nome do cliente</b> <span class="mut">· Segmento</span></figcaption></figure>
+      <figure class="card p-7 rv"><div style="color:#e9a016">★★★★★</div><blockquote class="mt-3 font-semibold">“[Depoimento real: atendimento e agilidade.]”</blockquote><figcaption class="mt-4 text-sm"><b>Nome do cliente</b> <span class="mut">· Segmento</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="max-w-3xl mx-auto px-5 py-16 md:py-24">
+  <h2 class="text-3xl sm:text-4xl text-center rv">Perguntas frequentes</h2>
+  <div class="mt-8 divide-y" style="border-block:1px solid var(--line)">
+    <details class="py-1"><summary class="flex justify-between items-center gap-4 font-bold">Atendem MEI e quem fatura pouco?<span class="pl text-2xl">+</span></summary><p class="mut pb-4">Sim. Atendemos do MEI a empresas maiores. Para quem fatura menos, o foco é manter o CNPJ em dia, evitar multas e preparar a empresa para crescer.</p></details>
+    <details class="py-1"><summary class="flex justify-between items-center gap-4 font-bold">Quanto custa a contabilidade?<span class="pl text-2xl">+</span></summary><p class="mut pb-4">Depende do porte e das necessidades da empresa. Você recebe a proposta com preço fechado junto do diagnóstico, antes de decidir qualquer coisa.</p></details>
+    <details class="py-1"><summary class="flex justify-between items-center gap-4 font-bold">O diagnóstico é gratuito mesmo?<span class="pl text-2xl">+</span></summary><p class="mut pb-4">Sim. Não pedimos cartão e não há compromisso. Você fica com o relatório mesmo que não contrate.</p></details>
+    <details class="py-1"><summary class="flex justify-between items-center gap-4 font-bold">Reduzir imposto é legal?<span class="pl text-2xl">+</span></summary><p class="mut pb-4">Sim. É planejamento tributário: escolher o enquadramento correto e usar os benefícios previstos na lei.</p></details>
+    <details class="py-1"><summary class="flex justify-between items-center gap-4 font-bold">Dá trabalho trocar de contador?<span class="pl text-2xl">+</span></summary><p class="mut pb-4">Não. Fazemos a migração por você, sem interromper a rotina da empresa.</p></details>
+    <details class="py-1"><summary class="flex justify-between items-center gap-4 font-bold">Atendem em qualquer cidade?<span class="pl text-2xl">+</span></summary><p class="mut pb-4">Sim. O atendimento é digital e cobre empresas de todo o Brasil.</p></details>
+  </div>
+</section>
+
+<!-- CTA final -->
+<section style="background:var(--navy);color:#fff">
+  <div class="max-w-3xl mx-auto px-5 py-16 text-center">
+    <h2 class="text-3xl sm:text-4xl">Pronto para ter uma contabilidade que trabalha por você?</h2>
+    <p class="mt-4" style="color:#c2cde2">Fale agora com um contador da Lamdim e peça seu diagnóstico gratuito.</p>
+    <a id="w2" href="#" target="_blank" rel="noopener" class="btn mt-7 sm:inline-flex sm:px-10">Chamar no WhatsApp →</a>
+  </div>
+</section>
+
+<footer class="text-center text-xs mut px-5 py-8 pb-28 md:pb-8">© 2026 Escritório Lamdim · CNPJ 00.000.000/0001-00 · CRC-XX nº 000000</footer>
+
+<div id="bar" class="fixed inset-x-0 bottom-0 z-50 p-3 md:hidden bg-white" style="border-top:1px solid var(--line);padding-bottom:calc(.75rem + env(safe-area-inset-bottom,0px))">
+  <a href="#diagnostico" class="btn">Diagnóstico gratuito →</a>
+</div>
+
+<script>
+(function(){
+  var PHONE='5511999999999'; // TROQUE: DDI+DDD+número do WhatsApp do escritório
+  var $=function(i){return document.getElementById(i)};
+  var wa=function(t){return 'https://wa.me/'+PHONE+'?text='+encodeURIComponent(t)};
+  var brl=function(v){return 'R$ '+(Math.round(v/10)*10).toLocaleString('pt-BR')};
+  var segs=['MEI','Clínicas e consultórios','Dentistas','Advogados','Arquitetos e engenheiros','E-commerce','Lojas e varejo','Restaurantes e bares','Salões e barbearias','Academias e estúdios','Agências e marketing','Prestadores de serviço','Representantes comerciais','Transportadoras','Construção civil','Indústrias','Tecnologia e software','Escolas e cursos','Profissionais liberais','Criadores de conteúdo','Agronegócio','Startups'];
+  var more=['Fisioterapeutas','Psicólogos e terapeutas','Nutricionistas','Veterinários e pet shops','Farmácias','Mercados e padarias','Oficinas e autopeças','Estética e beleza','Fotógrafos e videomakers','Designers','Produtoras e eventos','Consultores e coaches','Corretores de imóveis','Imobiliárias','Hotéis e pousadas','Turismo e viagens','Logística e fretes','Importação e exportação','Moda e confecções','Móveis e decoração','Gráficas','Segurança e monitoramento','Limpeza e conservação','Manutenção e reparos','Energia solar','Laboratórios','Educação infantil','Músicos e artistas','Streamers e gamers','Cooperativas','ONGs e associações','Cosméticos e perfumaria'];
+  var all=segs.concat(more),half=Math.ceil(all.length/2);
+  function row(a){var h='';for(var k=0;k<2;k++)a.forEach(function(s){h+='<span class="chip">'+s+'</span>'});return h}
+  $('marq').innerHTML=row(all.slice(0,half));$('marq2').innerHTML=row(all.slice(half));
+  var S='fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+  var svc=[
+   ['Abertura de empresa','Abra seu CNPJ do jeito certo, com o enquadramento mais vantajoso desde o início.','<path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>'],
+   ['Redução de impostos','Planejamento tributário dentro da lei para você reter mais dinheiro no caixa.','<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>'],
+   ['Troca de contador','Cuidamos de toda a migração, sem parar a rotina e sem dor de cabeça.','<path d="M7 7h11l-3-3M17 17H6l3 3"/>'],
+   ['Notas fiscais e obrigações','Emissão, guias e declarações em dia, com aviso antes de cada vencimento.','<path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h6M9 17h6"/>'],
+   ['Regularização de CNPJ','Pendências, dívidas e malha fina resolvidas para sua empresa voltar a respirar.','<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/>'],
+   ['Contador dedicado','Atendimento por WhatsApp com quem conhece o seu negócio, não um número de protocolo.','<path d="M4 5h16v11H9l-5 4zM8 10h8"/>']
+  ];
+  $('svc').innerHTML=svc.map(function(s){return '<div class="card p-7 rv"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" '+S+'>'+s[2]+'</svg></div><h3 class="text-xl mt-5">'+s[0]+'</h3><p class="mut mt-2 text-[15px]">'+s[1]+'</p></div>'}).join('');
+
+  var steps=[3000,5000,8000,10000,15000,20000,30000,50000,80000,120000,200000,300000],fat=$('fat'),rate=0.12,regime='Simples Nacional';
+  function calc(){
+    var v=steps[+fat.value],low=v<=10000||regime==='MEI',msg;
+    $('fatOut').textContent=(v<=10000?'Até ':'')+brl(v);
+    fat.style.setProperty('--p',(+fat.value/11*100)+'%');
+    if(low){
+      $('rl').textContent='O que a Lamdim faz por você';
+      $('res').textContent='CNPJ em dia, sem multa e pronto para crescer';
+      $('res2').textContent=regime==='MEI'&&v>6000?'Seu faturamento pode estar perto do limite do MEI. Planejar a migração evita cobrança retroativa.':'Nesta fase, o ganho está em regularizar, evitar multas e entender o próximo passo da sua empresa.';
+      msg='Olá! Fiz a simulação no site: faturamento de até '+brl(v)+'/mês, enquadramento '+regime+'. Quero organizar meu CNPJ e evitar multas.';
+    }else{
+      var tax=v*12*rate,lo=tax*0.08,hi=tax*0.20;
+      $('rl').textContent='Potencial de economia estimado';
+      $('res').textContent=brl(lo)+' a '+brl(hi)+' por ano';
+      $('res2').textContent='Cerca de '+brl(lo/12)+' a '+brl(hi/12)+' a mais no caixa todo mês.';
+      msg='Olá! Fiz a simulação no site: faturamento de '+brl(v)+'/mês, enquadramento '+regime+', economia estimada de '+brl(lo)+' a '+brl(hi)+'/ano. Quero confirmar no diagnóstico gratuito.';
+    }
+    $('w1').href=wa(msg);
+  }
+  fat.addEventListener('input',calc);
+  document.querySelectorAll('#reg .seg').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#reg .seg').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');rate=+b.dataset.r;regime=b.dataset.n;calc();});});
+  $('w2').href=wa('Olá! Vim pelo site e quero meu diagnóstico gratuito.');
+  $('send').addEventListener('click',function(){
+    var n=$('nome').value.trim(),t=$('tel').value.replace(/\D/g,'');
+    if(n.length<2||t.length<10){$('err').hidden=false;return;}
+    $('err').hidden=true;
+    window.open(wa('Olá! Sou '+n+' (WhatsApp '+$('tel').value+'). Faturamento: '+$('fx').value+'. Quero meu diagnóstico gratuito.'),'_blank');
+  });
+  var bar=$('bar'),form=$('diagnostico');
+  function sc(){var r=form.getBoundingClientRect();bar.classList.toggle('show',r.bottom<0||r.top>window.innerHeight);}
+  window.addEventListener('scroll',sc,{passive:true});sc();
+  calc();
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
