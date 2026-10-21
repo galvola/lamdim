@@ -1,21 +1,16 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-
-  <meta charset="utf-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="theme-color" content="#7200b8">
-
-  <title>Prospecção Feiras | eCatálogos</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="#7200b8" name="theme-color"/>
+  <title>
+   Prospecção Feiras | eCatálogos
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
   <script>
-
+   
     tailwind.config = {
 
       theme: {
@@ -46,10 +41,11 @@
 
     };
 
+
+  
   </script>
-
   <style>
-
+   
     body { background: radial-gradient(circle at top left, #f3e8ff 0, #f8fafc 42%, #eef2ff 100%); }
 
     input, select, textarea { outline: none; }
@@ -80,204 +76,257 @@
 
 
 
+
+  
   </style>
-
-</head>
-
-<body class="min-h-screen text-slate-800 antialiased">
-
- 
-<header class="bg-gradient-to-r from-brand-800 via-brand-700 to-fuchsia-600 text-white shadow-lg">
-
-  <div class="mx-auto flex max-w-7xl items-center px-4 py-3 sm:px-6">
-
+ </head>
+ <body class="min-h-screen text-slate-800 antialiased">
+  <header class="bg-gradient-to-r from-brand-800 via-brand-700 to-fuchsia-600 text-white shadow-lg">
+   <div class="mx-auto flex max-w-7xl items-center px-4 py-3 sm:px-6">
     <div class="flex items-center gap-3">
-
-      <!-- Logo eCatálogos 1:1 -->
-      <img
-        src="logo.png"
-        alt="Logo eCatálogos"
-        class="w-11 h-11 sm:w-12 sm:h-12
-               aspect-square object-contain
-               rounded-xl shadow-md shrink-0"
-      />
-
-      <!-- Informações -->
-      <div class="flex flex-col justify-center">
-        <p class="text-xs font-semibold uppercase tracking-[.18em] text-purple-100">
-          eCatálogos
-        </p>
-
-        <h1 class="text-base font-bold leading-tight sm:text-lg">
-          Prospecção de Feiras
-        </h1>
-      </div>
-
+     <!-- Logo eCatálogos 1:1 -->
+     <img alt="Logo eCatálogos" class="w-11 h-11 sm:w-12 sm:h-12 aspect-square object-contain rounded-xl shadow-md shrink-0" src="logo.png"/>
+     <!-- Informações -->
+     <div class="flex flex-col justify-center">
+      <p class="text-xs font-semibold uppercase tracking-[.18em] text-purple-100">
+       eCatálogos
+      </p>
+      <h1 class="text-base font-bold leading-tight sm:text-lg">
+       Prospecção de Feiras
+      </h1>
+     </div>
     </div>
-
-  </div>
-
-</header>
-
-
-
-
+   </div>
+  </header>
   <main class="mx-auto max-w-7xl px-3 py-3 sm:px-6 sm:py-4">
-
-    <div class="mb-3 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-
-      <div>
-
-        <h2 class="text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl">Novo contato comercial</h2>
-
-        <p class="mt-1 max-w-2xl text-xs text-slate-600">Registre empresas conhecidas nas feiras e organize os próximos passos da prospecção.</p>
-
-      </div>
-
+   <div class="mb-3 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+    <div>
+     <h2 class="text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl">
+      Novo contato comercial
+     </h2>
+     <p class="mt-1 max-w-2xl text-xs text-slate-600">
+      Registre empresas conhecidas nas feiras e organize os próximos passos da prospecção.
+     </p>
     </div>
-
-
-
-    <div id="notice" class="hidden fixed top-4 right-4 left-4 sm:left-auto sm:w-[390px] z-50 rounded-xl border px-4 py-3 text-sm shadow-2xl" role="status" aria-live="polite"></div>
-
-
-
-    <form id="leadForm" class="overflow-hidden rounded-2xl border border-white bg-white shadow-soft">
-
-      <div class="border-b border-slate-100 bg-slate-50/80 px-4 py-2 sm:px-5">
-
-        <div class="flex items-center justify-between gap-3">
-
-          <div>
-
-            <h3 class="font-bold text-slate-900">Dados da empresa</h3>
-
-            <p class="mt-0.5 text-xs text-slate-500">Os campos com * são obrigatórios.</p>
-
-          </div>
-
-          <span class="rounded-lg bg-purple-100 px-2 py-1 text-xs font-bold text-brand-800">Cadastro rápido</span>
-
-        </div>
-
+   </div>
+   <div aria-live="polite" class="hidden fixed top-4 right-4 left-4 sm:left-auto sm:w-[390px] z-50 rounded-xl border px-4 py-3 text-sm shadow-2xl" id="notice" role="status">
+   </div>
+   <form class="overflow-hidden rounded-2xl border border-white bg-white shadow-soft" id="leadForm">
+    <div class="border-b border-slate-100 bg-slate-50/80 px-4 py-2 sm:px-5">
+     <div class="flex items-center justify-between gap-3">
+      <div>
+       <h3 class="font-bold text-slate-900">
+        Dados da empresa
+       </h3>
+       <p class="mt-0.5 text-xs text-slate-500">
+        Os campos com * são obrigatórios.
+       </p>
       </div>
-
-
-
-      <div class="space-y-3 p-3 sm:p-5">
-
-        <section>
-
-          <h4 class="section-title mb-2 flex items-center gap-2"><span class="flex h-5 w-5 items-center justify-center rounded-lg bg-purple-100 text-sm text-brand-700">1</span> Identificação</h4>
-
-          <div class="grid grid-cols-1 gap-x-3 gap-y-2 grid-cols-2 lg:grid-cols-4">
-
-            <label><span class="field-label">Feira</span>
-
-<select class="field" name="feira" id="feiraSelect" required><option value="">Carregando feiras...</option></select>
-
-
-
-</label>
-
-            <label class="col-span-2"><span class="field-label">Empresa *</span><input class="field" name="empresa" required maxlength="180" placeholder="Nome da empresa"></label>
-
-            <label><span class="field-label">Ramo</span><input class="field" name="ramo" placeholder="Ex.: Distribuidor"></label>
-
-            <label><span class="field-label">Nome do contato</span><input class="field" name="nome" placeholder="Nome e sobrenome"></label>
-
-            <label><span class="field-label">Cargo</span><input class="field" name="cargo" placeholder="Ex.: Gerente comercial"></label>
-
-            <label><span class="field-label">Telefone / WhatsApp</span><input class="field" name="telefone" type="tel" placeholder="(00) 00000-0000"></label>
-
-          </div>
-
-        </section>
-
-
-
-        <section>
-
-          <h4 class="section-title mb-2 flex items-center gap-2"><span class="flex h-5 w-5 items-center justify-center rounded-lg bg-purple-100 text-sm text-brand-700">2</span> Perfil comercial</h4>
-
-          <div class="grid grid-cols-1 gap-x-3 gap-y-2 grid-cols-2 lg:grid-cols-4">
-
-            <label><span class="field-label">ERP utilizado</span><input class="field" name="erp" placeholder="Nome do ERP"></label>
-
-            <label><span class="field-label">Possui aplicativo?</span><select class="field" name="possuiApp" id="possuiApp"><option value="">Selecione...</option><option>Sim</option><option>Não</option><option>Em desenvolvimento</option><option>Não informado</option></select></label>
-
-            <label id="nomeAppBox" class="hidden"><span class="field-label">Nome do aplicativo *</span><input class="field" name="nomeApp" id="nomeApp" maxlength="120" placeholder="Qual aplicativo utiliza?"></label>
-
-            <label><span class="field-label">Número de representantes</span><input class="field" type="number" min="0" step="1" name="representantes" placeholder="Ex.: 15"></label>
-
-            <label><span class="field-label">Número de lojistas</span><input class="field" type="number" min="0" step="1" name="lojistas" placeholder="Ex.: 120"></label>
-
-            <fieldset class="col-span-2"><legend class="field-label">Produtos desejados (selecione um ou mais)</legend>
-
-              <div class="grid grid-cols-1 gap-1.5 rounded-lg border border-slate-200 bg-slate-50 p-2 sm:grid-cols-3">
-
-                <label class="compact-check"><input type="checkbox" name="produtosSelecionados" value="Força de Venda" > Força de Venda</label>
-
-                <label class="compact-check"><input type="checkbox" name="produtosSelecionados" value="eCommerce B2B" > eCommerce B2B</label>
-
-                <label class="compact-check"><input type="checkbox" name="produtosSelecionados" value="Link eCommerce +PDV" > Link eCommerce +PDV</label>
-
-              </div>
-
-            </fieldset>
-
-          </div>
-
-        </section>
-
-
-
-        <section>
-
-          <h4 class="section-title mb-2 flex items-center gap-2"><span class="flex h-5 w-5 items-center justify-center rounded-lg bg-purple-100 text-sm text-brand-700">3</span> Acompanhamento</h4>
-
-          <div class="grid grid-cols-1 gap-x-3 gap-y-2 grid-cols-2">
-
-            <label><span class="field-label">Status da prospecção</span><select class="field" name="status"><option value="">Selecione...</option><option>Novo contato</option><option>Em negociação</option><option>Aguardando retorno</option><option>Reunião agendada</option><option>Convertido</option><option>Perdido</option></select></label>
-
-            <label><span class="field-label">Próximo contato</span><input class="field" name="proximoContato" type="date"></label>
-
-            <label class="col-span-2"><span class="field-label">Observações</span><textarea class="field resize-y" name="observacao" maxlength="3000" placeholder="Interesses, necessidades, pontos discutidos e próximos passos..."></textarea></label>
-
-          </div>
-
-        </section>
-
-
-
-        <div class="flex flex-col-reverse gap-2 border-t border-slate-100 pt-3 sm:flex-row sm:items-center sm:justify-between">
-
-          <button type="reset" class="rounded-xl border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50">Limpar formulário</button>
-
-          <button id="submitBtn" type="submit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-purple-200 transition hover:bg-brand-800 disabled:cursor-wait disabled:opacity-60">
-
-            <span id="btnText">Cadastrar empresa</span><span aria-hidden="true">→</span>
-
-          </button>
-
-        </div>
-
-        <p class="text-xs leading-relaxed text-slate-500">A data do cadastro é preenchida pelo Apps Script. Após enviar, confira a aba “Página1” no Google Planilhas antes de repetir o cadastro, pois o navegador não consegue confirmar a resposta da API neste modo.</p>
-
+      <span class="rounded-lg bg-purple-100 px-2 py-1 text-xs font-bold text-brand-800">
+       Cadastro rápido
+      </span>
+     </div>
+    </div>
+    <div class="space-y-3 p-3 sm:p-5">
+     <section>
+      <h4 class="section-title mb-2 flex items-center gap-2">
+       <span class="flex h-5 w-5 items-center justify-center rounded-lg bg-purple-100 text-sm text-brand-700">
+        1
+       </span>
+       Identificação
+      </h4>
+      <div class="grid grid-cols-2 gap-x-3 gap-y-2 lg:grid-cols-4">
+       <label>
+        <span class="field-label">
+         Feira
+        </span>
+        <select class="field" id="feiraSelect" name="feira" required="">
+         <option value="">
+          Carregando feiras...
+         </option>
+        </select>
+       </label>
+       <label>
+        <span class="field-label">
+         Empresa *
+        </span>
+        <input class="field" maxlength="180" name="empresa" placeholder="Nome da empresa" required=""/>
+       </label>
+       <label>
+        <span class="field-label">
+         Ramo
+        </span>
+        <input class="field" name="ramo" placeholder="Ex.: Distribuidor"/>
+       </label>
+       <label>
+        <span class="field-label">
+         Nome do contato
+        </span>
+        <input class="field" name="nome" placeholder="Nome e sobrenome"/>
+       </label>
+       <label>
+        <span class="field-label">
+         Cargo
+        </span>
+        <input class="field" name="cargo" placeholder="Ex.: Gerente comercial"/>
+       </label>
+       <label>
+        <span class="field-label">
+         Telefone / WhatsApp
+        </span>
+        <input class="field" name="telefone" placeholder="(00) 00000-0000" type="tel"/>
+       </label>
       </div>
-
-    </form>
-
-
-
-    <footer class="py-3 text-center text-xs text-slate-500">eCatálogos · Prospecção comercial · Os dados são enviados ao Google Planilhas</footer>
-
+     </section>
+     <section>
+      <h4 class="section-title mb-2 flex items-center gap-2">
+       <span class="flex h-5 w-5 items-center justify-center rounded-lg bg-purple-100 text-sm text-brand-700">
+        2
+       </span>
+       Perfil comercial
+      </h4>
+      <div class="grid grid-cols-2 gap-x-3 gap-y-2 lg:grid-cols-4">
+       <label>
+        <span class="field-label">
+         ERP utilizado
+        </span>
+        <input class="field" name="erp" placeholder="Nome do ERP"/>
+       </label>
+       <label>
+        <span class="field-label">
+         Possui aplicativo?
+        </span>
+        <select class="field" id="possuiApp" name="possuiApp">
+         <option value="">
+          Selecione...
+         </option>
+         <option>
+          Sim
+         </option>
+         <option>
+          Não
+         </option>
+         <option>
+          Em desenvolvimento
+         </option>
+         <option>
+          Não informado
+         </option>
+        </select>
+       </label>
+       <label class="hidden" id="nomeAppBox">
+        <span class="field-label">
+         Nome do aplicativo *
+        </span>
+        <input class="field" id="nomeApp" maxlength="120" name="nomeApp" placeholder="Qual aplicativo utiliza?"/>
+       </label>
+       <label>
+        <span class="field-label">
+         Número de representantes
+        </span>
+        <input class="field" min="0" name="representantes" placeholder="Ex.: 15" step="1" type="number"/>
+       </label>
+       <label>
+        <span class="field-label">
+         Número de lojistas
+        </span>
+        <input class="field" min="0" name="lojistas" placeholder="Ex.: 120" step="1" type="number"/>
+       </label>
+       <fieldset class="col-span-2">
+        <legend class="field-label">
+         Produtos desejados (selecione um ou mais)
+        </legend>
+        <div class="grid grid-cols-1 gap-1.5 rounded-lg border border-slate-200 bg-slate-50 p-2 sm:grid-cols-3">
+         <label class="compact-check">
+          <input name="produtosSelecionados" type="checkbox" value="Força de Venda"/>
+          Força de Venda
+         </label>
+         <label class="compact-check">
+          <input name="produtosSelecionados" type="checkbox" value="eCommerce B2B"/>
+          eCommerce B2B
+         </label>
+         <label class="compact-check">
+          <input name="produtosSelecionados" type="checkbox" value="Link eCommerce +PDV"/>
+          Link eCommerce +PDV
+         </label>
+        </div>
+       </fieldset>
+      </div>
+     </section>
+     <section>
+      <h4 class="section-title mb-2 flex items-center gap-2">
+       <span class="flex h-5 w-5 items-center justify-center rounded-lg bg-purple-100 text-sm text-brand-700">
+        3
+       </span>
+       Acompanhamento
+      </h4>
+      <div class="grid grid-cols-1 gap-x-3 gap-y-2 grid-cols-2">
+       <label>
+        <span class="field-label">
+         Status da prospecção
+        </span>
+        <select class="field" name="status">
+         <option value="">
+          Selecione...
+         </option>
+         <option>
+          Novo contato
+         </option>
+         <option>
+          Em negociação
+         </option>
+         <option>
+          Aguardando retorno
+         </option>
+         <option>
+          Reunião agendada
+         </option>
+         <option>
+          Convertido
+         </option>
+         <option>
+          Perdido
+         </option>
+        </select>
+       </label>
+       <label>
+        <span class="field-label">
+         Próximo contato
+        </span>
+        <input class="field" name="proximoContato" type="date"/>
+       </label>
+       <label class="col-span-2">
+        <span class="field-label">
+         Observações
+        </span>
+        <textarea class="field resize-y" maxlength="3000" name="observacao" placeholder="Interesses, necessidades, pontos discutidos e próximos passos..."></textarea>
+       </label>
+      </div>
+     </section>
+     <div class="flex flex-col-reverse gap-2 border-t border-slate-100 pt-3 sm:flex-row sm:items-center sm:justify-between">
+      <button class="rounded-xl border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50" type="reset">
+       Limpar formulário
+      </button>
+      <button class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-purple-200 transition hover:bg-brand-800 disabled:cursor-wait disabled:opacity-60" id="submitBtn" type="submit">
+       <span id="btnText">
+        Cadastrar empresa
+       </span>
+       <span aria-hidden="true">
+        →
+       </span>
+      </button>
+     </div>
+     <p class="text-xs leading-relaxed text-slate-500">
+      A data do cadastro é preenchida pelo Apps Script. Após enviar, confira a aba “Página1” no Google Planilhas antes de repetir o cadastro, pois o navegador não consegue confirmar a resposta da API neste modo.
+     </p>
+    </div>
+   </form>
+   <footer class="py-3 text-center text-xs text-slate-500">
+    eCatálogos · Prospecção comercial · Os dados são enviados ao Google Planilhas
+   </footer>
   </main>
-
-
-
   <script>
-
+   
     // IMPORTANTE:
 
     // 1) Publique o Apps Script como Aplicativo da Web.
@@ -292,7 +341,6 @@
 
     const feiraSelect = document.getElementById('feiraSelect');
 
-    const outraFeira = document.getElementById('outraFeira');
 
 
 
@@ -555,8 +603,8 @@
 
     });
 
+
+  
   </script>
-
-</body>
-
+ </body>
 </html>
