@@ -78,7 +78,7 @@
         <section>
           <h4 class="section-title mb-4 flex items-center gap-2"><span class="flex h-7 w-7 items-center justify-center rounded-lg bg-purple-100 text-sm text-brand-700">1</span> Identificação</h4>
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <label><span class="field-label">Feira</span><input class="field" name="feira" placeholder="Ex.: Higiexpo"></label>
+            <label><span class="field-label">Feira</span><select class="field" name="feira"><option value="">Selecione...</option><option value="HIGIEXPO">HIGIEXPO</option></select></label>
             <label class="lg:col-span-2"><span class="field-label">Empresa *</span><input class="field" name="empresa" required maxlength="180" placeholder="Nome da empresa"></label>
             <label><span class="field-label">Ramo</span><input class="field" name="ramo" placeholder="Ex.: Distribuidor"></label>
             <label><span class="field-label">Nome do contato</span><input class="field" name="nome" placeholder="Nome e sobrenome"></label>
@@ -91,10 +91,17 @@
           <h4 class="section-title mb-4 flex items-center gap-2"><span class="flex h-7 w-7 items-center justify-center rounded-lg bg-purple-100 text-sm text-brand-700">2</span> Perfil comercial</h4>
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             <label><span class="field-label">ERP utilizado</span><input class="field" name="erp" placeholder="Nome do ERP"></label>
-            <label><span class="field-label">Possui aplicativo?</span><select class="field" name="app"><option value="">Selecione...</option><option>Sim</option><option>Não</option><option>Em desenvolvimento</option><option>Não informado</option></select></label>
-            <label><span class="field-label">Representantes</span><select class="field" name="representantes"><option value="">Selecione...</option><option>Sim</option><option>Não</option><option>Não informado</option></select></label>
-            <label><span class="field-label">Lojistas</span><select class="field" name="lojistas"><option value="">Selecione...</option><option>Sim</option><option>Não</option><option>Não informado</option></select></label>
-            <label class="md:col-span-2"><span class="field-label">Produto desejado</span><select class="field" name="produtoDesejado"><option value="">Selecione...</option><option>Força de Venda</option><option>Catálogo Digital</option><option>Aplicativo</option><option>Integração com ERP</option><option>Outro</option><option>A definir</option></select></label>
+            <label><span class="field-label">Possui aplicativo?</span><select class="field" name="possuiApp" id="possuiApp"><option value="">Selecione...</option><option>Sim</option><option>Não</option><option>Em desenvolvimento</option><option>Não informado</option></select></label>
+            <label id="nomeAppBox" class="hidden"><span class="field-label">Nome do aplicativo *</span><input class="field" name="nomeApp" id="nomeApp" maxlength="120" placeholder="Qual aplicativo utiliza?"></label>
+            <label><span class="field-label">Número de representantes</span><input class="field" type="number" min="0" step="1" name="representantes" placeholder="Ex.: 15"></label>
+            <label><span class="field-label">Número de lojistas</span><input class="field" type="number" min="0" step="1" name="lojistas" placeholder="Ex.: 120"></label>
+            <fieldset class="md:col-span-2"><legend class="field-label">Produtos desejados (selecione um ou mais)</legend>
+              <div class="grid grid-cols-1 gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:grid-cols-2">
+                <label class="flex cursor-pointer items-center gap-3 text-sm"><input type="checkbox" name="produtosSelecionados" value="Força de Venda" class="h-4 w-4 accent-purple-700"> Força de Venda</label>
+                <label class="flex cursor-pointer items-center gap-3 text-sm"><input type="checkbox" name="produtosSelecionados" value="eCommerce B2B" class="h-4 w-4 accent-purple-700"> eCommerce B2B</label>
+                <label class="flex cursor-pointer items-center gap-3 text-sm"><input type="checkbox" name="produtosSelecionados" value="Link eCommerce +PDV" class="h-4 w-4 accent-purple-700"> Link eCommerce +PDV</label>
+              </div>
+            </fieldset>
           </div>
         </section>
 
@@ -125,13 +132,25 @@
     // 1) Publique o Apps Script como Aplicativo da Web.
     // 2) Use a URL terminada em /exec (não /dev).
     // 3) Para testar, substitua esta URL pela URL /exec da sua implantação.
-    const API_URL = 'https://script.google.com/macros/s/AKfycbwQ0_1eFa6jgMkHdZLRbyh_WarPLsA8zk9mpC8edUgOTH9TaZEuW-EKBkJdkBZnbE8h/exec'.replace(/\/dev$/, '/exec');
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwQ0_1eFa6jgMkHdZLRbyh_WarPLsA8zk9mpC8edUgOTH9TaZEuW-EKBkJdkBZnbE8h/exec';
 
-    
     const form = document.getElementById('leadForm');
     const button = document.getElementById('submitBtn');
     const buttonText = document.getElementById('btnText');
     const notice = document.getElementById('notice');
+    const possuiApp = document.getElementById('possuiApp');
+    const nomeApp = document.getElementById('nomeApp');
+    const nomeAppBox = document.getElementById('nomeAppBox');
+    function atualizarApp() {
+      const mostrar = possuiApp.value === 'Sim';
+      nomeAppBox.classList.toggle('hidden', !mostrar);
+      nomeApp.required = mostrar;
+      if (!mostrar) nomeApp.value = '';
+    }
+    possuiApp.addEventListener('change', atualizarApp);
+    form.addEventListener('reset', () => setTimeout(atualizarApp, 0));
+    atualizarApp();
+
 
     function showNotice(message, type) {
       notice.className = 'mb-5 rounded-2xl border px-4 py-3 text-sm ' +
@@ -155,6 +174,16 @@
 
       const data = Object.fromEntries(new FormData(form).entries());
       data.empresa = (data.empresa || '').trim();
+      // Envia todos os produtos em uma única célula da coluna L.
+      data.produtoDesejado = [...form.querySelectorAll('input[name="produtosSelecionados"]:checked')]
+        .map(input => input.value).join(', ');
+      delete data.produtosSelecionados;
+      // Mantém compatibilidade com a coluna I (App) e o Apps Script atual.
+      data.app = data.possuiApp === 'Sim'
+        ? 'Sim - ' + data.nomeApp.trim()
+        : (data.possuiApp || '');
+      delete data.possuiApp;
+      delete data.nomeApp;
 
       if (!data.empresa) {
         showNotice('Informe o nome da empresa.', 'error');
@@ -183,7 +212,8 @@
           'Solicitação enviada ao Google Planilhas. Como o navegador não permite ler a resposta do Apps Script neste modo, confira a última linha da aba “Página1” antes de tentar enviar novamente.',
           'warning'
         );
-        form.reset();
+        // Não limpa o formulário: o modo no-cors não confirma a gravação.
+        // Confira a planilha antes de tentar novamente.
       } catch (error) {
         showNotice(
           'Não foi possível enviar a solicitação. Verifique sua conexão e se o Apps Script está publicado como Aplicativo da Web com acesso autorizado.',
