@@ -88,8 +88,8 @@
           <h4 class="section-title mb-2 flex items-center gap-2"><span class="flex h-5 w-5 items-center justify-center rounded-lg bg-purple-100 text-sm text-brand-700">1</span> Identificação</h4>
           <div class="grid grid-cols-1 gap-x-3 gap-y-2 grid-cols-2 lg:grid-cols-4">
             <label><span class="field-label">Feira</span>
-<select class="field" name="feira" id="feiraSelect"><option value="">Carregando feiras...</option></select>
-<input class="field hidden mt-1" id="outraFeira" maxlength="100" placeholder="Nome da nova feira">
+<select class="field" name="feira" id="feiraSelect" required><option value="">Carregando feiras...</option></select>
+
 </label>
             <label class="col-span-2"><span class="field-label">Empresa *</span><input class="field" name="empresa" required maxlength="180" placeholder="Nome da empresa"></label>
             <label><span class="field-label">Ramo</span><input class="field" name="ramo" placeholder="Ex.: Distribuidor"></label>
@@ -149,43 +149,41 @@
     const feiraSelect = document.getElementById('feiraSelect');
     const outraFeira = document.getElementById('outraFeira');
 
-    function atualizarOutraFeira() {
-      const outra = feiraSelect.value === '__outra__';
-      outraFeira.classList.toggle('hidden', !outra);
-      outraFeira.required = outra;
-      if (!outra) outraFeira.value = '';
-    }
-    feiraSelect.addEventListener('change', atualizarOutraFeira);
-
-    // JSONP: leitura pública de opções sem bloqueio CORS do Apps Script.
+    // Busca somente as opções da aba Configurações (coluna A, a partir de A2).
     function carregarFeiras() {
       const callback = 'receberFeiras_' + Date.now();
       const script = document.createElement('script');
-      const timeout = setTimeout(() => {
-        feiraSelect.innerHTML = '<option value="">Falha ao carregar</option><option value="__outra__">+ Outra feira</option>';
-        script.remove();
-        delete window[callback];
-      }, 12000);
-      window[callback] = (resposta) => {
+      let finalizado = false;
+      const encerrar = (erro) => {
+        if (finalizado) return;
+        finalizado = true;
         clearTimeout(timeout);
         script.remove();
         delete window[callback];
-        feiraSelect.replaceChildren(new Option('Selecione...', ''));
-        if (resposta && resposta.sucesso && Array.isArray(resposta.feiras)) {
-          resposta.feiras.forEach(nome => feiraSelect.add(new Option(nome, nome)));
+        if (erro) {
+          feiraSelect.replaceChildren(new Option('Erro ao carregar feiras — atualize a página', ''));
+          feiraSelect.disabled = true;
+          showNotice(erro, 'error');
         }
-        feiraSelect.add(new Option('+ Outra feira', '__outra__'));
-        atualizarOutraFeira();
       };
-      script.onerror = () => {
-        clearTimeout(timeout);
-        script.remove();
-        delete window[callback];
-        feiraSelect.innerHTML = '<option value="">Selecione...</option><option value="__outra__">+ Outra feira</option>';
+      const timeout = setTimeout(() => encerrar('Não foi possível carregar as feiras. Confira a implantação /exec e a aba Configurações.'), 12000);
+      window[callback] = (resposta) => {
+        if (finalizado) return;
+        if (!resposta || !resposta.sucesso || !Array.isArray(resposta.feiras)) {
+          encerrar(resposta?.mensagem || 'Falha ao buscar feiras.');
+          return;
+        }
+        feiraSelect.replaceChildren(new Option('Selecione a feira...', ''));
+        resposta.feiras.forEach(nome => feiraSelect.add(new Option(nome, nome)));
+        feiraSelect.disabled = false;
+        encerrar();
+        if (!resposta.feiras.length) showNotice('A aba Configurações não possui feiras em A2:A.', 'warning');
       };
+      script.onerror = () => encerrar('Erro ao acessar o Apps Script. Verifique a URL /exec e o acesso da implantação.');
       script.src = API_URL + '?acao=feiras&callback=' + encodeURIComponent(callback);
       document.head.appendChild(script);
     }
+    feiraSelect.disabled = true;
     carregarFeiras();
 
     const form = document.getElementById('leadForm');
@@ -202,7 +200,7 @@
       if (!mostrar) nomeApp.value = '';
     }
     possuiApp.addEventListener('change', atualizarApp);
-    form.addEventListener('reset', () => setTimeout(() => { atualizarApp(); atualizarOutraFeira(); }, 0));
+    form.addEventListener('reset', () => setTimeout(() => { atualizarApp(); }, 0));
     atualizarApp();
 
 
@@ -228,8 +226,7 @@
 
       const data = Object.fromEntries(new FormData(form).entries());
       data.empresa = (data.empresa || '').trim();
-      if (data.feira === '__outra__') data.feira = outraFeira.value.trim();
-      if (feiraSelect.value === '__outra__' && !data.feira) { showNotice('Informe o nome da nova feira.', 'error'); return; }
+      if (!data.feira) { showNotice('Selecione uma feira.', 'error'); return; }
       // Envia todos os produtos em uma única célula da coluna L.
       data.produtoDesejado = [...form.querySelectorAll('input[name="produtosSelecionados"]:checked')]
         .map(input => input.value).join(', ');
