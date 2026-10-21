@@ -113,7 +113,7 @@
             <span id="btnText">Cadastrar empresa</span><span aria-hidden="true">→</span>
           </button>
         </div>
-        <p class="text-xs leading-relaxed text-slate-500">A data do cadastro é preenchida pelo Apps Script. Antes de cadastrar novamente após um envio incerto, confira a planilha para evitar duplicidade.</p>
+        <p class="text-xs leading-relaxed text-slate-500">A data do cadastro é preenchida pelo Apps Script. Após enviar, confira a aba “Página1” no Google Planilhas antes de repetir o cadastro, pois o navegador não consegue confirmar a resposta da API neste modo.</p>
       </div>
     </form>
 
@@ -121,6 +121,12 @@
   </main>
 
   <script>
+    // IMPORTANTE:
+    // 1) Publique o Apps Script como Aplicativo da Web.
+    // 2) Use a URL terminada em /exec (não /dev).
+    // 3) Para testar, substitua esta URL pela URL /exec da sua implantação.
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwXubF14QB001nk_m0dfBZc-1U_HkiyM5q0N9oJajI/dev'.replace(/\/dev$/, '/exec');
+
     const form = document.getElementById('leadForm');
     const button = document.getElementById('submitBtn');
     const buttonText = document.getElementById('btnText');
@@ -137,7 +143,12 @@
       notice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    form.addEventListener('submit', (event) => {
+    function setSending(isSending) {
+      button.disabled = isSending;
+      buttonText.textContent = isSending ? 'Enviando...' : 'Cadastrar empresa';
+    }
+
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       if (!form.reportValidity()) return;
 
@@ -149,29 +160,37 @@
         return;
       }
 
-      button.disabled = true;
-      buttonText.textContent = 'Enviando...';
+      if (!API_URL || !/\/exec$/.test(API_URL)) {
+        showNotice('Configure a URL publicada do Apps Script, terminada em /exec.', 'error');
+        return;
+      }
 
-      // Funciona quando esta página é servida pelo Apps Script
-      // via HtmlService. Não usa fetch nem depende de CORS.
-      google.script.run
-        .withSuccessHandler((resultado) => {
-          button.disabled = false;
-          buttonText.textContent = 'Cadastrar empresa';
+      setSending(true);
+      try {
+        // Apps Script ContentService não permite configurar cabeçalhos CORS.
+        // O modo no-cors permite enviar o POST de uma página GitHub Pages,
+        // mas o navegador não libera a resposta para leitura. Portanto,
+        // não é possível confirmar o resultado automaticamente nesta página.
+        await fetch(API_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(data)
+        });
 
-          if (resultado && resultado.sucesso) {
-            showNotice(resultado.mensagem || 'Empresa cadastrada com sucesso!', 'success');
-            form.reset();
-          } else {
-            showNotice((resultado && resultado.mensagem) || 'Não foi possível cadastrar a empresa.', 'error');
-          }
-        })
-        .withFailureHandler((erro) => {
-          button.disabled = false;
-          buttonText.textContent = 'Cadastrar empresa';
-          showNotice('Erro ao salvar: ' + (erro && erro.message ? erro.message : 'falha inesperada.'), 'error');
-        })
-        .salvarCadastro(data);
+        showNotice(
+          'Solicitação enviada ao Google Planilhas. Como o navegador não permite ler a resposta do Apps Script neste modo, confira a última linha da aba “Página1” antes de tentar enviar novamente.',
+          'warning'
+        );
+        form.reset();
+      } catch (error) {
+        showNotice(
+          'Não foi possível enviar a solicitação. Verifique sua conexão e se o Apps Script está publicado como Aplicativo da Web com acesso autorizado.',
+          'error'
+        );
+      } finally {
+        setSending(false);
+      }
     });
   </script>
 </body>
